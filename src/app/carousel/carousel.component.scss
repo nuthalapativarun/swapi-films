@@ -1,0 +1,46 @@
+.carousel{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.prev{
+    width: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.next {
+    width: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.carousel-items{
+    min-width: 250px;
+    min-height: 250px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(49, 51, 58, 0.2);
+    padding: 32px;
+    background-color: #fff;
+    margin-bottom: 16px;
+    max-width: 100%;
+
+    & .carousel-indicators{
+        display: none;
+    }
+}
+
+.main-heading{
+    font-size: 24px;
+    text-align: center;
+}
+
+.sub-heading1{
+    font-size: 18px;
+    text-align: center;
+}

@@ -1,0 +1,22 @@
+.films{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100vh
+}
+
+.prev{
+    width: 10%;
+    background-color: red;
+}
+
+.next {
+    width: 10%;
+    background-color: red;
+}
+
+.carousel{
+    width: 50%;
+    background-color: green;
+}
