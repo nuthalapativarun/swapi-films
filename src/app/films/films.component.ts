@@ -1,7 +1,8 @@
-import { FilmDetailsService } from './../services/film-details.service';
+import * as MoviesActions from './../shared/store/movies/actions';
 import { Component, OnInit } from '@angular/core';
-import { identifierModuleUrl } from '@angular/compiler';
-import { map } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import { AppState } from './../app.state';
+import * as MoviesSelectors from './../shared/store/movies/selectors';
 
 @Component({
   selector: 'app-films',
@@ -10,24 +11,16 @@ import { map } from 'rxjs/operators';
 })
 export class FilmsComponent implements OnInit {
   filmsData:any = [];
-  constructor(private filmDetailService: FilmDetailsService) { }
+  constructor(private store: Store<AppState>) { }
 
-  ngOnInit() {
-    this.getFilms();
-    this.filmDetailService.filmsChanged.subscribe(data => {
-      this.filmsData = data;
+  ngOnInit() {    
+    this.store.select(MoviesSelectors.getFilms).subscribe(data => {
+      if (data) {
+        this.filmsData = data;
+      }else{
+        this.store.dispatch(new MoviesActions.LoadFilms());
+      }
     });
   }
 
-  getFilms(){
-    this.filmDetailService.getFilms();
-  }
-  previous(){
-    
-    console.log("clickedx prev");
-  }
-
-  next(){
-    console.log("next prev");
-  }
 }

@@ -6,6 +6,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable, from, forkJoin} from 'rxjs';
 import { concatAll, switchMap, mergeMap } from 'rxjs/operators';
+
+import { Store } from '@ngrx/store';
+import { AppState } from './../app.state';
+import * as MoviesSelectors from './../shared/store/movies/selectors';
+
+
 @Component({
   selector: 'app-characters',
   templateUrl: './characters.component.html',
@@ -21,13 +27,18 @@ export class CharactersComponent implements OnInit {
   data: any;
 
   constructor(private router: Router, private route: ActivatedRoute, private filmDetailService: FilmDetailsService, 
-    private characterDetailsService: CharacterDetailsService, private speciesDetailsService: SpeciesDetailsService, private httpClient: HttpClient) { }
+    private characterDetailsService: CharacterDetailsService, private speciesDetailsService: SpeciesDetailsService, 
+    private httpClient: HttpClient, private store: Store<AppState>) { }
 
   ngOnInit() {
-    this.filmsData = this.filmDetailService.filmsData;
-    if(!this.filmsData){
-      this.back();
-    }
+    this.store.select(MoviesSelectors.getFilms).subscribe(data => {
+      if (data) {
+        this.filmsData = data;
+      }else{
+        this.back();
+      }
+    });
+    
     this.route.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];

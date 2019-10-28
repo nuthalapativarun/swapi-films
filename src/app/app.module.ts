@@ -11,6 +11,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselComponent } from './carousel/carousel.component';
 import { CharactersComponent } from './characters/characters.component';
+import { metaReducers, reducers } from './shared/store/metaReducer';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { MoviesEffects } from './shared/store/movies/effects'
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +30,10 @@ import { CharactersComponent } from './characters/characters.component';
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot(reducers, {metaReducers}),
+    StoreDevtoolsModule.instrument({maxAge: 100}),
+    EffectsModule.forRoot([MoviesEffects]),
   ],
   providers: [FilmDetailsService, CharacterDetailsService, SpeciesDetailsService],
   bootstrap: [AppComponent]

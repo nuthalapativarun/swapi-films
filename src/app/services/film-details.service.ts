@@ -7,17 +7,12 @@ const filmsUrl = 'https://swapi.co/api/films/';
   providedIn: 'root'
 })
 
-
 export class FilmDetailsService {
-  filmsData:any;
-  filmsChanged = new Subject();
+
   constructor(private http: HttpClient) { 
   }
 
-  getFilms(){
-      this.http.get(filmsUrl).subscribe(data => {
-        this.filmsData = data['results'];
-        this.filmsChanged.next(this.filmsData);
-      });
+  get(){
+    return this.http.get(filmsUrl);
   }
 }

@@ -15,7 +15,6 @@ export class CarouselComponent implements OnInit {
   constructor(private router: Router) { }
   @ViewChild('imgCarousel') imgCarousel: NgbCarousel;
   ngOnInit() {
-    console.log("Carousel films data", this.data);
   }
 
 
