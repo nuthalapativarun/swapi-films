@@ -31,6 +31,52 @@ export const initialState: State = {
         }
       }
 
+      case MoviesActionTypes.LoadPeople: {
+        return {
+          ...state,
+        }
+      }
+
+      case MoviesActionTypes.LoadPeopleSuccess: {
+        return {
+          ...state,
+          people: {
+            ...state.people,
+            ...action.payload
+          }
+        }
+      }
+
+      case MoviesActionTypes.LoadPeopleFailure: {
+        return {
+          ...state,
+          people: null
+        }
+      }
+
+      case MoviesActionTypes.LoadSpecies: {
+        return {
+          ...state,
+        }
+      }
+
+      case MoviesActionTypes.LoadSpeciesSuccess: {
+        return {
+          ...state,
+          species: {
+            ...state.species,
+            ...action.payload
+          }
+        }
+      }
+
+      case MoviesActionTypes.LoadSpeciesFailure: {
+        return {
+          ...state,
+          species: null
+        }
+      }
+
       default: {
         return state ;
       }

@@ -1,6 +1,7 @@
 <div class="characters">
     <button class="btn btn-lg btn-primary" (click)="back()" aria-label="back-to-movies">Back</button>
-</div>
-<div *ngIf= "data">
-    <app-carousel [data]="data"></app-carousel>
+    <div>
+            <h3 class="heading">{{movieName}}</h3>
+            <app-carousel [data]="data"></app-carousel>
+    </div>
 </div>

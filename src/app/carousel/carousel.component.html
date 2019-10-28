@@ -1,25 +1,4 @@
-<!-- <ngb-carousel *ngIf="images" #sampleCorousel>
-  <ng-template ngbSlide *ngFor="let film of filmsData.results">
-    <div class="picsum-img-wrapper">
-     {{film.title}}
-    </div>
-    <div class="carousel-caption">
-      <h3>First slide label</h3>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-    </div>
-  </ng-template>
-  
-</ngb-carousel> -->
-
-
-
-
-<!-- <button class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-triangle-right"></span></button>
-<button class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-triangle-left"></span>Right</button>
-<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-<i class="glyphicon glyphicon-triangle-left"></i> -->
-
-
+<div class="card">
 <div class="carousel" *ngIf="data && data.length > 0">
   <div class="prev">
     <button class="btn btn-lg btn-primary" (click)="previous()" aria-label="previous-title"><</button> 
@@ -46,8 +25,8 @@
     <button class="btn btn-lg btn-primary" (click)="next()" aria-label="next-title">></button>
   </div>
 </div>
-
-
+<div class="spinner" *ngIf="!data || !data.length > 0"></div>
+</div>
 
 
 
