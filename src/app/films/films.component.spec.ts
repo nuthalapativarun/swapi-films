@@ -1,6 +1,10 @@
+import { CarouselComponent } from './../carousel/carousel.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
 import { FilmsComponent } from './films.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { StoreModule, Store } from '@ngrx/store';
+import * as fromRoot from '../shared/store/metaReducer';
 
 describe('FilmsComponent', () => {
   let component: FilmsComponent;
@@ -8,7 +12,18 @@ describe('FilmsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FilmsComponent ]
+      declarations: [ FilmsComponent, CarouselComponent, NgbCarousel ],
+      imports: [
+        RouterTestingModule.withRoutes([
+          {
+              path:'',
+              component: FilmsComponent
+          }
+        ]),
+        StoreModule.forRoot({
+          ...fromRoot.reducers
+        })
+      ]
     })
     .compileComponents();
   }));

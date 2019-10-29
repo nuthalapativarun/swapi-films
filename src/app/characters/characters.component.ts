@@ -13,7 +13,7 @@ import * as MoviesActions from './../shared/store/movies/actions'
 })
 export class CharactersComponent implements OnInit {
   id: any;
-  characters: [] = [];
+  characters: any[] = [];
   filmsData: any;
   currentCharacterData:any = [];
   currentPeopleIds: any[] = [];

@@ -16,17 +16,41 @@ module.exports = function (config) {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
     coverageIstanbulReporter: {
-      dir: require('path').join(__dirname, '../coverage/movies'),
-      reports: ['html', 'lcovonly', 'text-summary'],
-      fixWebpackSourcePaths: true
+      dir: require('path').join(__dirname, '../reports/unit-test-coverage'),
+      reports : [ 'html', 'lcovonly' ],
+      verbose : true,
+      combineBrowserReports : true,
+      fixWebpackSourcePaths: true,
+      skipFilesWithNoCoverage : true,
+      'report-config' : {
+				html : {
+					subdir : 'html'
+				}
+			}
     },
-    reporters: ['progress', 'kjhtml'],
+    htmlReporter             : {
+			outputFile : 'reports/unit-tests/index.html',
+
+			// Optional
+			pageTitle       : 'Unit Tests',
+			groupSuites     : true,
+			useCompactStyle : true,
+			useLegacyStyle  : true,
+			showOnlyFailed  : false
+		},
+    reporters                : [ 'progress', 'kjhtml' ],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
     singleRun: false,
-    restartOnFileChange: true
+    restartOnFileChange: true,
+    customLaunchers          : {
+			ChromeHeadlessNoSandbox : {
+				base  : 'ChromeHeadless',
+				flags : [ '--headless', '--no-sandbox', '--disable-dev-shm-usage' ]
+			}
+		}
   });
 };

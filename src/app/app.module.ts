@@ -30,7 +30,6 @@ import { MoviesEffects } from './shared/store/movies/effects'
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
-    AppRoutingModule,
     StoreModule.forRoot(reducers, {metaReducers}),
     StoreDevtoolsModule.instrument({maxAge: 100}),
     EffectsModule.forRoot([MoviesEffects]),
