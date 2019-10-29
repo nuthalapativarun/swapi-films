@@ -62,3 +62,6 @@ typings/
 
 # test reports
 reports
+
+# dist folder
+dist
